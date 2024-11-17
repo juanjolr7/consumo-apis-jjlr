@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,11 @@ export class LoginComponent {
     if (userExists) {      
       this.router.navigate(['/users']);
     } else {
-      alert('Credenciales incorrectos');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Credenciales incorrectas!",
+      });
     }
   }
 }
